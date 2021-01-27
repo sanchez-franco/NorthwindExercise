@@ -1,0 +1,36 @@
+﻿@page
+@model Northwind.Web.Pages.DisplayViewModel
+@{
+    ViewData["Title"] = "Customer Summary";
+}
+
+<h1>Summary</h1>
+
+<form>
+    <p>
+        Title: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <tr>
+        <th>Customer</th>
+        <th>Product</th>
+        <th>Product Total</th>
+        <th>Quantity Total</th>
+        <th>Min Order Date</th>
+        <th>Max Order Date</th>
+    </tr>
+    @foreach (var row in Model.CustomerSummarys)
+    {
+<tr>
+    <td>@row.CustomerId</td>
+    <td>@row.ProductName</td>
+    <td>@row.ProductTotal</td>
+    <td>@row.QuantityTotal</td>
+    <td>@row.MinOrderDate</td>
+    <td>@row.MaxOrderDate</td>
+</tr>
+    }
+</table>

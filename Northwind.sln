@@ -3,13 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Web", "Northwind.Web\Northwind.Web.csproj", "{064F0691-B153-486F-BA1D-9F064933F498}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Web", "Northwind.Web\Northwind.Web.csproj", "{064F0691-B153-486F-BA1D-9F064933F498}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Common", "Northwind.Common\Northwind.Common.csproj", "{DFE8801A-3A85-462D-A0DD-3D0FE5C166D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Common", "Northwind.Common\Northwind.Common.csproj", "{DFE8801A-3A85-462D-A0DD-3D0FE5C166D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Api", "Northwind.Api\Northwind.Api.csproj", "{C96634FC-A698-4374-BF7E-6E0C232E7318}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Api", "Northwind.Api\Northwind.Api.csproj", "{C96634FC-A698-4374-BF7E-6E0C232E7318}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Services", "Northwind.Services\Northwind.Services.csproj", "{BC7CD2C8-42AA-4180-8180-F75D2B1F7B22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Services", "Northwind.Services\Northwind.Services.csproj", "{BC7CD2C8-42AA-4180-8180-F75D2B1F7B22}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Data", "Northwind.Database\Northwind.Data.csproj", "{2F99C6F8-A95F-4E53-A84F-B4BF4B573904}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{9302C223-5866-4EA3-9D12-2B967350D925}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{CC86740D-2420-4488-A3A2-6FC07C0767DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{07223A0B-1087-4D7E-AE3C-65D9418D619A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{15019D02-8AC5-4B12-9568-0993B93FC68E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{4663AE11-4932-42A6-9339-0E451E3EEF32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +45,20 @@ Global
 		{BC7CD2C8-42AA-4180-8180-F75D2B1F7B22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC7CD2C8-42AA-4180-8180-F75D2B1F7B22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC7CD2C8-42AA-4180-8180-F75D2B1F7B22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F99C6F8-A95F-4E53-A84F-B4BF4B573904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F99C6F8-A95F-4E53-A84F-B4BF4B573904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F99C6F8-A95F-4E53-A84F-B4BF4B573904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F99C6F8-A95F-4E53-A84F-B4BF4B573904}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{064F0691-B153-486F-BA1D-9F064933F498} = {4663AE11-4932-42A6-9339-0E451E3EEF32}
+		{DFE8801A-3A85-462D-A0DD-3D0FE5C166D5} = {07223A0B-1087-4D7E-AE3C-65D9418D619A}
+		{C96634FC-A698-4374-BF7E-6E0C232E7318} = {CC86740D-2420-4488-A3A2-6FC07C0767DB}
+		{BC7CD2C8-42AA-4180-8180-F75D2B1F7B22} = {9302C223-5866-4EA3-9D12-2B967350D925}
+		{2F99C6F8-A95F-4E53-A84F-B4BF4B573904} = {15019D02-8AC5-4B12-9568-0993B93FC68E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7C3A41B9-B076-478E-A322-DA305DDE79DC}

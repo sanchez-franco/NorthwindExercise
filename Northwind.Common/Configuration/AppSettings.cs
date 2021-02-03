@@ -1,8 +1,8 @@
-﻿namespace Northwind.Common
+﻿namespace Northwind.Common.Configuration
 {
     public class AppSettings
     {
         public string ServiceEndPoint { get; set; }
-        public string ConnectionString { get; set; }
+        public string NorthwindDb { get; set; }
     }
 }

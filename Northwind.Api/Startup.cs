@@ -3,7 +3,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Northwind.Common;
+using Microsoft.EntityFrameworkCore;
+using Northwind.Common.Configuration;
+using Northwind.Common.Interface;
+using Northwind.Data.Context;
+using Northwind.Data.Repository;
 using Northwind.Services;
 
 namespace Northwind.Api
@@ -20,15 +24,28 @@ namespace Northwind.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            services.AddDbContext<NorthwindContext>(opt =>
+            {
+                opt.UseSqlServer(Configuration.GetConnectionString("NorthwindDb"));
+            });
 
+            services.AddCors();
+            //We set the default for all controllers to be authorize
             services.AddControllers()
                 .AddJsonOptions(x => x.JsonSerializerOptions.IgnoreNullValues = true);
 
-            services.AddScoped<ICustomerService, MemoryCustomerService>();
+            // configure DI for application services
+            // change your testing data provider
+            services.AddScoped<ICustomerService, EFCoreCustomerService>();
+            //services.AddScoped<ICustomerService, ADONetCustomerService>();
+            //services.AddScoped<ICustomerService, MemoryCustomerService>();
+
+            // configure DI for application repositories
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
 
             services.AddMvc(opt => opt.EnableEndpointRouting = false);
 
+            // configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
         }

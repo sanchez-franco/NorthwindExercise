@@ -3,16 +3,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Northwind.Common;
-using Northwind.Web.Helpers;
+using Northwind.Common.Interface;
+using Northwind.Common.Model;
 
 namespace Northwind.Web.Pages
 {
     public class DisplayViewModel : PageModel
     {
-        private readonly ICustomerApi _customerApi;
+        private readonly ICustomerService _customerApi;
 
-        public DisplayViewModel(ICustomerApi customerApi)
+        public DisplayViewModel(ICustomerService customerApi)
         {
             _customerApi = customerApi;
         }
@@ -24,10 +24,10 @@ namespace Northwind.Web.Pages
 
         public async Task OnGetAsync()
         {
-            CustomerSummarys = (await _customerApi.Get()).Where(c =>
+            CustomerSummarys = (await _customerApi.GetCustomerSummary()).Where(c =>
                 string.IsNullOrEmpty(SearchString)
                     ||
-               (c.CustomerName.ToLower().Contains(SearchString?.ToLower()) || c.ProductName.ToLower().Contains(SearchString?.ToLower()))).ToList();
+               (c.CompanyName.ToLower().Contains(SearchString?.ToLower()) || c.ProductName.ToLower().Contains(SearchString?.ToLower()))).ToList();
         }
     }
 }

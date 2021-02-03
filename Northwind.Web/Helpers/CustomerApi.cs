@@ -1,17 +1,14 @@
 ﻿using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using Northwind.Common;
+using Northwind.Common.Configuration;
+using Northwind.Common.Interface;
+using Northwind.Common.Model;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Northwind.Web.Helpers
 {
-    public interface ICustomerApi
-    {
-        Task<CustomerSummary[]> Get();
-    }
-
-    public class CustomerApi : ICustomerApi
+    public class CustomerApi : ICustomerService
     {
         private readonly AppSettings _appSettings;
 
@@ -20,7 +17,7 @@ namespace Northwind.Web.Helpers
             _appSettings = appSettings.Value;
         }
 
-        public async Task<CustomerSummary[]> Get()
+        public async Task<CustomerSummary[]> GetCustomerSummary()
         {
             using (var client = new HttpClient())
             {

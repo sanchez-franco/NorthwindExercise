@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Northwind.Common;
-using Northwind.Services;
+using Northwind.Common.Interface;
+using Northwind.Common.Model;
 using System;
 using System.Threading.Tasks;
 
@@ -23,7 +23,7 @@ namespace Northwind.Api.Controllers
         {
             try
             {
-                var response = _customerService.GetCustomerSummary();
+                var response = await _customerService.GetCustomerSummary();
 
                 if (response == null)
                     return NotFound();

@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Northwind.Common;
+using Northwind.Common.Configuration;
+using Northwind.Common.Interface;
 using Northwind.Web.Helpers;
 
 namespace Northwind.Web
@@ -25,7 +26,7 @@ namespace Northwind.Web
                 options.Conventions.AddPageRoute("/DisplayView", "");
             });
 
-            services.AddScoped<ICustomerApi, CustomerApi>();
+            services.AddScoped<ICustomerService, CustomerApi>();
 
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
